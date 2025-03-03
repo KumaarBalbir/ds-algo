@@ -208,3 +208,31 @@ void reverseList(struct Node **head)
   }
   *head = prev;
 }
+struct Node *mergeSortedList(struct Node *first, struct Node *second)
+{
+  struct Node *result = NULL;
+  while (first != NULL && second != NULL)
+  {
+    if ((first)->data <= (second)->data)
+    {
+      insertAtEnd(&result, (first)->data);
+      first = (first)->next;
+    }
+    else
+    {
+      insertAtEnd(&result, (second)->data);
+      second = (second)->next;
+    }
+  }
+  while ((first) != NULL)
+  {
+    insertAtEnd(&result, (first)->data);
+    first = (first)->next;
+  }
+  while ((second) != NULL)
+  {
+    insertAtEnd(&result, (second)->data);
+    second = (second)->next;
+  }
+  return result;
+}
