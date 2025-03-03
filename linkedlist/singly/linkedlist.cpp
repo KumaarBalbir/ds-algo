@@ -31,7 +31,6 @@ LinkedList::LinkedList(int arr[], int n)
   first->data = arr[0];
   first->next = NULL;
   last = first;
-  int i = 0;
   for (int i = 1; i < n; i++)
   {
     t = new Node;
