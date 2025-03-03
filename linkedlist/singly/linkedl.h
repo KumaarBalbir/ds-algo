@@ -24,4 +24,5 @@ void deleteAtPosition(struct Node **head, int position);
 int isSorted(struct Node *head);
 void reverseList(struct Node **head);
 struct Node *mergeSortedList(struct Node *first, struct Node *second);
+int hasCycle(struct Node *head);
 #endif // LINKED_L.h

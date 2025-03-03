@@ -208,7 +208,7 @@ void reverseList(struct Node **head)
   }
   *head = prev;
 }
-struct Node *mergeSortedList(struct Node *first, struct Node *second)
+struct Node *mergeSortedList(struct Node *first, struct Node *second) // TODO: how to do in place merging?
 {
   struct Node *result = NULL;
   while (first != NULL && second != NULL)
@@ -235,4 +235,19 @@ struct Node *mergeSortedList(struct Node *first, struct Node *second)
     second = (second)->next;
   }
   return result;
+}
+int hasCycle(struct Node *head)
+{
+  struct Node *slow = head;
+  struct Node *fast = head;
+  while (fast != NULL && fast->next != NULL)
+  {
+    slow = slow->next;
+    fast = fast->next->next;
+    if (slow == fast)
+    {
+      return 1;
+    }
+  }
+  return 0;
 }
