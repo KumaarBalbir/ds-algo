@@ -22,4 +22,5 @@ void deleteFirst(struct Node **head);
 void deleteLast(struct Node **head);
 void deleteAtPosition(struct Node **head, int position);
 int isSorted(struct Node *head);
+void reverseList(struct Node **head);
 #endif // LINKED_L.h
