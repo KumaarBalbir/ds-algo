@@ -1,15 +1,8 @@
 #include "circularLinkedList.h"
 
-Node::Node(int value)
-{
-  data = value;
-  next = nullptr;
-}
+Node::Node(int value) : data(value), next(nullptr) {}
 
-CircularLinkedList::CircularLinkedList()
-{
-  tail = nullptr;
-}
+CircularLinkedList::CircularLinkedList() : tail(nullptr) {}
 
 void CircularLinkedList::insert(int value)
 {

@@ -1,17 +1,8 @@
 #include "doublyLinkedList.h"
 
-Node::Node(int value)
-{
-  data = value;
-  prev = nullptr;
-  next = nullptr;
-}
+Node::Node(int value) : data(value), prev(nullptr), next(nullptr) {}
 
-DoublyLinkedList::DoublyLinkedList()
-{
-  head = nullptr;
-  tail = nullptr;
-}
+DoublyLinkedList::DoublyLinkedList() : head(nullptr), tail(nullptr) {}
 
 void DoublyLinkedList::insertFront(int value)
 {
