@@ -12,7 +12,7 @@ struct Queue
   void Enqueue(int val);
   int Dequeue();
   void display();
-  void queueFront();
+  
 
 };
 
