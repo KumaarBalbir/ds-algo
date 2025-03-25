@@ -15,7 +15,7 @@ Queue::~Queue()
 
 void Queue::Enqueue(int val)
 {
-  if(capacity == rear)
+  if((rear+1)%capacity == front)
     {
       printf("Q is full\n");
       
@@ -23,7 +23,7 @@ void Queue::Enqueue(int val)
     }else
     {
       queue[rear] = val;
-      rear++;
+      rear = (rear+1)%capacity;
     }
 }
 
@@ -34,13 +34,9 @@ int Queue::Dequeue()
       printf("Q is empty\n");
       return -1;
     }
-  int data = queue[front-1];
-  // shift the data towards front
-  for(int i=0;i<rear-1;i++)
-    {
-      queue[i] = queue[i+1];
-    }
-  rear--;
+  int data = queue[front];
+  front = (front+1)%capacity;
+  
   return data;
 }
 
