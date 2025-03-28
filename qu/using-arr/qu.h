@@ -1,7 +1,7 @@
 #ifndef QU_H
-#def QU_H
+#define QU_H
 
-#include<iostream>
+#include <iostream>
 
 struct Queue
 {
@@ -12,9 +12,6 @@ struct Queue
   void Enqueue(int val);
   int Dequeue();
   void display();
-  
-
 };
 
-
-#endif 
+#endif
