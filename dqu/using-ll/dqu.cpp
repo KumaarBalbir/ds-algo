@@ -59,3 +59,18 @@ int DEQueue::deleteFront()
   delete temp;
   return data;
 }
+
+void DEQueue::insertRear(int val)
+{
+  Node *newNode = new Node(val);
+  if (rear == nullptr)
+  {
+    front = rear = newNode;
+  }
+  else
+  {
+    rear->next = newNode;
+    newNode->prev = rear;
+    rear = newNode;
+  }
+}
