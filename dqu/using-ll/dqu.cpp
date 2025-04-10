@@ -74,3 +74,25 @@ void DEQueue::insertRear(int val)
     rear = newNode;
   }
 }
+
+int DEQueue::deleteRear()
+{
+  if (rear == nullptr)
+  {
+    std::cout << "DEQueue is empty" << std::endl;
+    return -1;
+  }
+  int data = rear->data;
+  Node *temp = rear;
+  rear = rear->prev;
+  if (rear != nullptr)
+  {
+    rear->next = nullptr;
+  }
+  else
+  {
+    front = nullptr;
+  }
+  delete temp;
+  return data;
+}
