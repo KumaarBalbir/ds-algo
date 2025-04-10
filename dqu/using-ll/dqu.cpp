@@ -12,3 +12,13 @@ DEQueue::DEQueue(int size)
   front = nullptr;
   rear = nullptr;
 }
+
+DEQueue::~DEQueue()
+{
+  while (front != nullptr)
+  {
+    Node *temp = front;
+    front = front->next;
+    delete temp;
+  }
+}
