@@ -37,3 +37,25 @@ void DEQueue::insertFront(int val)
     front = newNode;
   }
 }
+
+int DEQueue::deleteFront()
+{
+  if (front == nullptr)
+  {
+    std::cout << "DEQueue is empty" << std::endl;
+    return -1;
+  }
+  int data = front->data;
+  Node *temp = front;
+  front = front->next;
+  if (front != nullptr)
+  {
+    front->prev = nullptr;
+  }
+  else
+  {
+    rear = nullptr;
+  }
+  delete temp;
+  return data;
+}
