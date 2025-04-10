@@ -6,3 +6,9 @@ Node::Node(int value)
   prev = nullptr;
   next = nullptr;
 }
+
+DEQueue::DEQueue(int size)
+{
+  front = nullptr;
+  rear = nullptr;
+}
