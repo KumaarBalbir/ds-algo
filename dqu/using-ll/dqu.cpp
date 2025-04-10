@@ -96,3 +96,19 @@ int DEQueue::deleteRear()
   delete temp;
   return data;
 }
+
+void DEQueue::display()
+{
+  if (front == nullptr)
+  {
+    std::cout << "DEQueue is empty" << std::endl;
+    return;
+  }
+  Node *temp = front;
+  while (temp != nullptr)
+  {
+    std::cout << temp->data << " ";
+    temp = temp->next;
+  }
+  std::cout << std::endl;
+}
