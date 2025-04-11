@@ -12,6 +12,7 @@ private:
 public:
   void enqueue(int x);
   int dequeue();
+  bool isEmpty();
 };
 
 #endif
