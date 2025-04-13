@@ -18,3 +18,9 @@ void max_heapify(int arr[], int idx, int N)
     max_heapify(arr, largest, N);
   }
 }
+void build_max_heap(int arr[])
+{
+  int N = sizeof(arr) / sizeof(arr[0]);
+  for (int i = N / 2 - 1; i >= 0; i--)
+    max_heapify(arr, i, N);
+}
