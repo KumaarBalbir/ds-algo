@@ -124,6 +124,7 @@ std::vector<std::string> Trie::searchAllWithPrefix(const std::string &prefix)
   std::vector<std::string> result;
   std::string str = prefix;
   searchAllWithPrefixHelper(current, str, result);
+  return result;
 }
 
 std::string searchHighestPriorityHelper(trieNode *current, std::string prefix)
