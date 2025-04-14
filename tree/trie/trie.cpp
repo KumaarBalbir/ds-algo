@@ -126,4 +126,45 @@ std::vector<std::string> Trie::searchAllWithPrefix(const std::string &prefix)
   searchAllWithPrefixHelper(current, str, result);
 }
 
+std::string searchHighestPriorityHelper(trieNode *current, std::string prefix)
+{
+  if (current->isEndOfWord)
+  {
+    return prefix;
+  }
+  int maxPriority = -1;
+  std::string result = "";
+  for (int i = 0; i < 26; i++)
+  {
+    if (current->children[i] != nullptr)
+    {
+      std::string newPrefix = prefix + char(i + 'a');
+      int priority = current->children[i]->getPriority();
+      if (priority > maxPriority) // any priority > -1 means, end of word.
+      {
+        maxPriority = priority;
+        result = newPrefix;
+      }
+    }
+  }
+  return result;
+}
+
+std::string Trie::searchHighestPriority(const std::string &prefix)
+{
+  trieNode *current = root;
+  int idx;
+  for (char ch : prefix)
+  {
+    idx = ch - 'a';
+    if (current->children[idx] == nullptr) // first time, char ch is on this level of tree.
+    {
+      return "";
+    }
+    current = current->children[idx];
+  }
+  std::string result = searchHighestPriorityHelper(current, prefix);
+  return result;
+}
+
 #endif // TRIE_CPP
