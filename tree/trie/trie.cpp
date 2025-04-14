@@ -2,7 +2,6 @@
 #define TRIE_CPP
 
 #include "trie.h"
-#include <iostream>
 
 trieNode::trieNode()
 {
