@@ -127,24 +127,35 @@ std::vector<std::string> Trie::searchAllWithPrefix(const std::string &prefix)
   return result;
 }
 
-std::string searchHighestPriorityHelper(trieNode *current, std::string prefix)
+std::string Trie::searchHighestPriorityHelper(trieNode *current, const std::string &prefix)
 {
-  if (current->isEndOfWord)
-  {
-    return prefix;
-  }
-  int maxPriority = -1;
-  std::string result = "";
+  int maxPriority = current->isEndOfWord ? current->getPriority() : -1;
+  std::string result = current->isEndOfWord ? prefix : "";
+  
   for (int i = 0; i < 26; i++)
   {
     if (current->children[i] != nullptr)
     {
       std::string newPrefix = prefix + char(i + 'a');
-      int priority = current->children[i]->getPriority();
-      if (priority > maxPriority) // any priority > -1 means, end of word.
+      std::string childResult = searchHighestPriorityHelper(current->children[i], newPrefix);
+      if (!childResult.empty())
       {
-        maxPriority = priority;
-        result = newPrefix;
+        // Find the end node of the complete word
+        trieNode* endNode = current->children[i];
+        while (!endNode->isEndOfWord) {
+          for (int j = 0; j < 26; j++) {
+            if (endNode->children[j] != nullptr) {
+              endNode = endNode->children[j];
+              break;
+            }
+          }
+        }
+        int childPriority = endNode->getPriority();
+        if (childPriority > maxPriority)
+        {
+          maxPriority = childPriority;
+          result = childResult;
+        }
       }
     }
   }
