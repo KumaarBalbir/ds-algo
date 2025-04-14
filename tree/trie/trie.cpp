@@ -93,4 +93,38 @@ bool Trie::prefixExists(const std::string &prefix)
   return true;
 }
 
+void Trie::searchAllWithPrefixHelper(trieNode *current, std::string prefix, std::vector<std::string> &result)
+{
+  if (current->isEndOfWord)
+  {
+    result.push_back(prefix);
+  }
+  for (int i = 0; i < 26; i++)
+  {
+    if (current->children[i] != nullptr)
+    {
+      std::string newPrefix = prefix + char(i + 'a');
+      searchAllWithPrefixHelper(current->children[i], newPrefix, result);
+    }
+  }
+}
+
+std::vector<std::string> Trie::searchAllWithPrefix(const std::string &prefix)
+{
+  trieNode *current = root;
+  int idx;
+  for (char ch : prefix)
+  {
+    idx = ch - 'a';
+    if (current->children[idx] == nullptr) // first time, char ch is on this level of tree.
+    {
+      return {};
+    }
+    current = current->children[idx];
+  }
+  std::vector<std::string> result;
+  std::string str = prefix;
+  searchAllWithPrefixHelper(current, str, result);
+}
+
 #endif // TRIE_CPP
