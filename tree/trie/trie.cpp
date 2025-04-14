@@ -34,5 +34,9 @@ int trieNode::getPriority()
 {
   return priority;
 }
+Trie::Trie()
+{
+  root = new trieNode();
+}
 
 #endif // TRIE_CPP
