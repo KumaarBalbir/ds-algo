@@ -20,7 +20,7 @@ private:
   trieNode *root;
 
   void searchAllWithPrefixHelper(trieNode *node, std::string prefix, std::vector<std::string> &result);
-  std::string searchHighestPriorityHelper(trieNode *node, std::string prefix);
+  std::string searchHighestPriorityHelper(trieNode *node, const std::string &prefix);
 
 public:
   Trie();
