@@ -61,4 +61,20 @@ void Trie::insert(const std::string &word, int priority)
   current->setPriority(priority);
 }
 
+bool Trie::Contains(const std::string &word)
+{
+  trieNode *current = root;
+  int idx;
+  for (char ch : word)
+  {
+    idx = ch - 'a';
+    if (current->children[idx] == nullptr) // first time, char ch is on this level of tree.
+    {
+      return false;
+    }
+    current = current->children[idx];
+  }
+  return current->isEndOfWord;
+}
+
 #endif // TRIE_CPP
