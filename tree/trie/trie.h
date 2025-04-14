@@ -18,7 +18,6 @@ struct trieNode
   ~trieNode();
   void setPriority(int p);
   int getPriority();
-  trieNode(std::string &word, int priority);
 };
 class Trie
 {
@@ -36,6 +35,7 @@ public:
   void insert(const std::string &word, int priority);
   bool search(const std::string &word);
   std::vector<std::string> searchAll(const std::string &prefix);
+
   std::string searchHighestPriority(const std::string &prefix);
   void deleteWord(const std::string &word);
 };
