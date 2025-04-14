@@ -39,4 +39,9 @@ Trie::Trie()
   root = new trieNode();
 }
 
+Trie::~Trie()
+{
+  delete root;
+}
+
 #endif // TRIE_CPP
