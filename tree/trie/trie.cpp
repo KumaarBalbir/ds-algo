@@ -44,4 +44,21 @@ Trie::~Trie()
   delete root;
 }
 
+void Trie::insert(const std::string &word, int priority)
+{
+  trieNode *current = root;
+  int idx;
+  for (char ch : word)
+  {
+    idx = ch - 'a';
+    if (current->children[idx] == nullptr) // first time, char ch is on this level of tree.
+    {
+      current->children[idx] = new trieNode();
+    }
+    current = current->children[idx];
+  }
+  current->isEndOfWord = true;
+  current->setPriority(priority);
+}
+
 #endif // TRIE_CPP
