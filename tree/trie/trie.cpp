@@ -30,4 +30,9 @@ void trieNode::setPriority(int p)
   priority = p;
 }
 
+int trieNode::getPriority()
+{
+  return priority;
+}
+
 #endif // TRIE_CPP
