@@ -77,4 +77,20 @@ bool Trie::Contains(const std::string &word)
   return current->isEndOfWord;
 }
 
+bool Trie::prefixExists(const std::string &prefix)
+{
+  trieNode *current = root;
+  int idx;
+  for (char ch : prefix)
+  {
+    idx = ch - 'a';
+    if (current->children[idx] == nullptr) // first time, char ch is on this level of tree.
+    {
+      return false;
+    }
+    current = current->children[idx];
+  }
+  return true;
+}
+
 #endif // TRIE_CPP
