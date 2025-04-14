@@ -25,4 +25,9 @@ trieNode::~trieNode()
   }
 }
 
+void trieNode::setPriority(int p)
+{
+  priority = p;
+}
+
 #endif // TRIE_CPP
