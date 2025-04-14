@@ -14,4 +14,15 @@ trieNode::trieNode()
   priority = -1; // default priority which means word is not complete.
 }
 
+trieNode::~trieNode()
+{
+  for (int i = 0; i < 26; i++)
+  {
+    if (children[i] != nullptr)
+    {
+      delete children[i];
+    }
+  }
+}
+
 #endif // TRIE_CPP
